@@ -1,0 +1,17 @@
+1.Apply a label color=blue to node node01
+
+#controlplane $ k label nodes node01 color=blue
+node/node01 labeled
+
+2.Set Node Affinity to the deployment to place the pods on node01 only
+
+Name: blue
+Replicas: 6
+Image: nginx
+NodeAffinity: requiredDuringSchedulingIgnoredDuringExecution
+Key: color
+values: blue
+
+   # k create deploy blue --image=nginx --replicas=6
+   # k edit deploy/blue
+   and add NodeAffinity section. please check nodeaffinity_blue.yml for the answer.

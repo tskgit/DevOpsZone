@@ -1,0 +1,12 @@
+1.How many ReplicaSets exist on the system?
+    k get ReplicaSets
+2.To Edit ReplicaSets
+    k edit rs new-replica-set
+3.To Delete ReplicaSets
+    k delete rs new-replica-set
+4.To scale the ReplicaSets to 5 PODs
+    k scale --replicas=5 rs/new-replica-set
+             OR
+    Run the command 'kubectl edit replicaset new-replica-set', 
+    modify the replicas and then save the file.
+
