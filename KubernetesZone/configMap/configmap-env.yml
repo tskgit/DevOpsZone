@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Pod
+metadata:
+ name: pod-env
+spec:
+ containers:
+  - name: cont-env
+    image: nginx
+    ports:
+     - containerPort: 80
+    env:
+     - name: USER_NAME
+       valueFrom:
+        configMapKeyRef:
+         name: env-configmap
+         key: name
+     - name: USER_ROLE
+       valueFrom:
+        configMapKeyRef:
+         name: env-configmap
+         key: designation
+    volumeMounts:
+     - name: vol-env
+       mountPath: /etc/nginx/conf.d/
+ volumes:
+  - name: vol-env
+    configMap:
+     name: env-configmap
+     items:
+      - key: defult.conf
+        path: default.conf

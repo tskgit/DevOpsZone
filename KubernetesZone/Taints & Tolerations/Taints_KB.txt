@@ -1,0 +1,27 @@
+1.Create a taint on node01 with key of 'spray', value of 'mortein' and effect of 'NoSchedule'
+Key = spray
+Value = mortein
+Effect = NoSchedule
+
+    # kubectl taint nodes node01 spray=mortein:NoSchedule
+
+2.Create another pod named 'bee' with the NGINX image, which has a toleration set to the taint Mortein.
+
+Image name: nginx
+Key: spray
+Value: mortein
+Effect: NoSchedule
+Status: Running
+
+  # k run bee --image=nginx --dry-run=client -o yaml > bee.yaml
+  Edit bee.yaml
+  see toleration_bee.yml
+
+3.Remove the taint on master/controlplane, which currently has the taint effect of NoSchedule.
+
+# kubectl taint nodes controlplane node-role.kubernetes.io/master:NoSchedule-
+
+Note: We just need to include '-' at the end to remove the taints.
+
+  
+
