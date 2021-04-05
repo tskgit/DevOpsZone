@@ -1,0 +1,24 @@
+kind: Pod
+apiVersion: v1
+metadata:
+ name: nginx-configmap-po
+ labels:
+  app: configmap-nginx
+spec:
+ containers:
+  - image: nginx
+    name: nginx-configmap-cont
+    ports:
+     - containerPort: 80
+    volumeMounts:
+     - mountPath: /usr/share/nginx/html/
+       name: nginx-configmap-vol
+ volumes:
+  - name: nginx-configmap-vol
+    configMap:
+     name: index-nginx-config
+     items:
+      - key: index.html
+        path: index.html
+      - key: index2.html
+        path: index2.html

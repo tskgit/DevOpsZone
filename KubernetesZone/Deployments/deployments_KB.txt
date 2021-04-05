@@ -1,0 +1,15 @@
+1.How many Deployments exist on the system?
+    # k get deploy
+2.What is the image used to create the pods in the new deployment?
+    # k describe deploy frontend-deployment | grep -i image
+3.Create a new Deployment with the below attributes using your own deployment definition file
+  Name: httpd-frontend; Replicas: 3; Image: httpd:2.4-alpine
+    # k create deploy httpd-frontend --image=httpd:2.4-alpine --dry-run=client -o yaml > deploy.yml
+    # k create -f deploy.yml
+    # k scale --replicas=3 deploy/httpd-frontend
+4.To Edit the deployment
+    # k edit deploy/frontend-deployment
+5. To Delete the deployment
+    # k delete deploy/frontend-deployment
+   
+
