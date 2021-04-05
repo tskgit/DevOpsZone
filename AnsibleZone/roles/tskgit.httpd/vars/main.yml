@@ -1,4 +1,0 @@
----
-# vars file for tskgit.httpd
-web_package_rhel: httpd
-web_package_deb: apache2

@@ -1,8 +1,0 @@
----
-# handlers file for tskgit.httpd
-- name: Restarting the Web Service
-  service:
-   name: "{{web_package}}"
-   state: stopped
-   enabled: yes
-

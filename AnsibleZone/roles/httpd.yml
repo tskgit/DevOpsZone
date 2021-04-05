@@ -1,5 +1,0 @@
----
-- name: This play installs Web Service
-  hosts: all
-  roles:
-  - tskgit.httpd
